@@ -1,10 +1,16 @@
-const mongoose = require('mongoose')
-const URL = process.env.MONGO_URI
+const mongoose = require('mongoose');
+require('dotenv').config();  // Add this line at the top
+
+const URL = process.env.MONGO_URI;
+console.log('MongoDB URI:', URL); // Add this for debugging
 
 mongoose.connect(URL)
-mongoose.Promise = global.Promise
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.error('MongoDB connection error:', err));
 
-const db = mongoose.connection
-db.on('error', console.error.bind(console, 'DB ERROR: '))
+mongoose.Promise = global.Promise;
 
-module.exports = {db, mongoose}
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'DB ERROR: '));
+
+module.exports = {db, mongoose};
