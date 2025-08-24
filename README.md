@@ -1,28 +1,101 @@
-# Travel Memory
+# End-to-End MERN Deployment & Monitoring
+
+## Objective
+
+Deploy and monitor a MERN app using Terraform, Ansible, Prometheus & Grafana with AWS infrastructure.
+
+## Results:
+
+
+
+## Application Repo
+
+[TravelMemory](https://github.com/UnpredictablePrashant/TravelMemory)
+
+## EC2 Instances
+
+| Service         | EC2 name   | 
+| --------------- | ---------- |
+| MERN Web Server | web-server |
+| MongoDB Server  | db-server  |
+
+## Ports
+
+| Service    | Ports                                       |
+| ---------- | --------------------------------------------|
+| Web Server | 22, 80, 443, 9100, 9090, 9216               |
+| DB Server  | 22, 27017, 9216 (from web server)           |
+
+## Architecture Diagram
+
+```
++----------------+            +----------------+
+| MERN Web Server| --------> | MongoDB Server |
+| (Node.js/React)|           | (MongoDB + Exp)|
++----------------+            +----------------+
+         |
+         v
+  +--------------+
+  |  Prometheus  |
+  +--------------+
+         |
+         v
+   +------------+
+   |  Grafana   |
+   +------------+
+```
+
+## Screenshots
+
+* Terraform Outputs: `![Terraform](path/to/screenshot.png)`
+* Grafana Dashboards: `![Dashboard](path/to/screenshot.png)`
+* Alert Config: `![Alerts](path/to/screenshot.png)`
+
+## Common Commands
+
+**Terraform:**
+
+```
+terraform init
+terraform plan
+terraform apply
+terraform destroy
+terraform output
+```
+
+**Ansible:**
+
+```
+ansible-playbook -i inventory.ini main.yml
+
+```
+
+**Node.js/Frontend:**
+
+```
+npm install
+npm run start
+```
+
+## Quick Q\&A
+
+| Q                      | A                                            |
+| ---------------------- | -------------------------------------------- |
+| What is `prom-client`? | Node.js lib to expose metrics for Prometheus |
+| MongoDB Exporter?      | Collects DB metrics for Prometheus           |
+| Restrict DB access?    | Security groups allow only web server IP     |
+| Separate EC2 for DB?   | Security & scalability                       |
+| Grafana alerts?        | Notify on errors, slow APIs, DB issues       |
+
+
+
+
 
 `.env` file to work with the backend after creating a database in mongodb: 
 
 ```
 MONGO_URI='ENTER_YOUR_URL'
 PORT=3001
-```
-
-Data format to be added: 
-
-```json
-{
-    "tripName": "Incredible India",
-    "startDateOfJourney": "19-03-2022",
-    "endDateOfJourney": "27-03-2022",
-    "nameOfHotels":"Hotel Namaste, Backpackers Club",
-    "placesVisited":"Delhi, Kolkata, Chennai, Mumbai",
-    "totalCost": 800000,
-    "tripType": "leisure",
-    "experience": "Lorem Ipsum, Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum,Lorem Ipsum, ",
-    "image": "https://t3.ftcdn.net/jpg/03/04/85/26/360_F_304852693_nSOn9KvUgafgvZ6wM0CNaULYUa7xXBkA.jpg",
-    "shortDescription":"India is a wonderful country with rich culture and good people.",
-    "featured": true
-}
 ```
 
 
