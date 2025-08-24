@@ -1,0 +1,18 @@
+# templates/travelapp-backend.service.j2
+[Unit]
+Description=Travel Memory Backend
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/TravelMemory/backend
+Environment=PORT=3001
+Environment=MONGO_URI=mongodb://{{ mongo_user }}:{{ mongo_password }}@{{ hostvars[groups['database'][0]]['ansible_host'] }}:27017/{{ mongo_db_name }}
+ExecStart=/usr/bin/node index.js
+Restart=on-failure
+StandardOutput=append:/var/log/travelapp-backend.log
+StandardError=append:/var/log/travelapp-backend.error.log
+
+[Install]
+WantedBy=multi-user.target
