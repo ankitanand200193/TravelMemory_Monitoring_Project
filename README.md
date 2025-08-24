@@ -6,9 +6,49 @@ Deploy and monitor a MERN app using Terraform, Ansible, Prometheus & Grafana wit
 
 ## Results:
 
-### Terraform_Provisioning:
+### Terraform_Provisioning: 
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-![Alt]
+![Alt](Results_screenshots/terraform_output.jpg)
+
+### Ansible configuration:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![Alt](Results_screenshots/ansible_success.jpg)
+
+### App Webserver on AWS console:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![Alt](Results_screenshots/web_server_ec2.png)
+
+### App Webserver Frontend Home:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![Alt](Results_screenshots/Frontend_home.png)
+
+### App Webserver Frontend to Backend Communication via Nginx:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![Alt](Results_screenshots/frontend_to_backend.png)
+
+### Prometheus Targets:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![Alt](Results_screenshots/Prometheus_targets.png)
+
+
+### Prometheus-Grafana Connection:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![Alt](Results_screenshots/Graffana_connect%20to_prometheus.png)
+
+### Node_Exporter Grafana Dashboard:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![Alt](Results_screenshots/node_exporter_dashboard.png)
+
+
+### MongoDB Grafana Dashboard:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![Alt](Results_screenshots/mongodb_dashboard.png)
+
+
+### Alert Rule Grafana:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![Alt](Results_screenshots/alert_graffana.png)
 
 
 ## Application Repo
@@ -32,10 +72,10 @@ Deploy and monitor a MERN app using Terraform, Ansible, Prometheus & Grafana wit
 ## Architecture Diagram
 
 ```
-+----------------+            +----------------+
-| MERN Web Server| --------> | MongoDB Server |
-| (Node.js/React)|           | (MongoDB + Exp)|
-+----------------+            +----------------+
++-------------------------------+           +----------------+
+| MERN Web Server               | --------> | MongoDB Server |
+| (Node.js/React+ node exporter)|           | (MongoDB + Exp)|
++-------------------------------+           +----------------+
          |
          v
   +--------------+
@@ -47,13 +87,6 @@ Deploy and monitor a MERN app using Terraform, Ansible, Prometheus & Grafana wit
    |  Grafana   |
    +------------+
 ```
-
-## Screenshots
-
-* Terraform Outputs: `![Terraform](path/to/screenshot.png)`
-* Grafana Dashboards: `![Dashboard](path/to/screenshot.png)`
-* Alert Config: `![Alerts](path/to/screenshot.png)`
-
 ## Common Commands
 
 **Terraform:**
@@ -77,7 +110,7 @@ ansible-playbook -i inventory.ini main.yml
 
 ```
 npm install
-npm run start
+npm run build
 ```
 
 ## Quick Q\&A
@@ -92,7 +125,7 @@ npm run start
 
 
 
-
+## Environment variable
 
 `.env` file to work with the backend after creating a database in mongodb: 
 
