@@ -7,6 +7,7 @@ Deploy and monitor a MERN app using Terraform, Ansible, Prometheus & Grafana wit
 ## Results:
 
 ### Terraform_Provisioning: 
+###### Note : EC2 IPs might be different as resources were stop and restart on several days.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ![Alt](Results_screenshots/terraform_output.jpg)
