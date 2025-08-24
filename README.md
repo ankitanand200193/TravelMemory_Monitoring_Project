@@ -6,6 +6,9 @@ Deploy and monitor a MERN app using Terraform, Ansible, Prometheus & Grafana wit
 
 ## Results:
 
+### Terraform_Provisioning:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![Alt]
 
 
 ## Application Repo
